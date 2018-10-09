@@ -6,6 +6,7 @@ const userSchema = new Schema({
   password: String,
   image: String,
   description: String,
+  gender: {type: String, enum: ['male', 'female']},
   location: String,
   telephone: Number
 }, {

@@ -35,7 +35,7 @@ class Signup extends Component {
     return (
       <div>
       <div>
-        <h3>Sing up</h3>
+        <h3>Sign up</h3>
 
         <form onSubmit={this.handleFormSubmit}>
           <fieldset>
