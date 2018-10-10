@@ -25,7 +25,7 @@ class Navbar extends Component {
             <li><button onClick={this.handleLogout}>Logout</button></li>
           </ul>
 
-          <h2>Bienvenido, {this.state.loggedInUser.username}</h2>
+          <h2>¡Bienvenido {this.state.loggedInUser.username}!</h2>
         </nav>
       )
     } else {

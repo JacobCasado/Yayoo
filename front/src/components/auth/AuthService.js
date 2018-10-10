@@ -19,7 +19,7 @@ class AuthService {
   }
 
   loggedin = () => {
-    return this.service.get('/currentUser',)
+    return this.service.get('/currentuser',)
     .then(response => response.data)
   }
 
@@ -33,9 +33,8 @@ class AuthService {
     .then(response => response.data)
   }
 
-
-  edit = (username, password, campus, course) => {
-    return this.service.post('/edit', {username, campus, course})
+  edit = (username, image, description, gender, location, telephone) => {
+    return this.service.post('/EditProfile', {username, image, description, gender, location, telephone})
     .then(response => response.data)
   }
 }
