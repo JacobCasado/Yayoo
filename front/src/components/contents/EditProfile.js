@@ -6,16 +6,18 @@ export default class EditProfile extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-        user: this.props.user
+        user: {}
     }
   }
 
+  componentDidMount = () => {
+    this.setState({user: this.props.user})
+  }
+
   handleFormSubmit=(event)=>{
-    const {username, image, description, location, gender, telephone}=this.state;
-    console.log(this.state)
-    const profile={username, image, description, location, gender, telephone};
+    const data = this.state.user;
     event.preventDefault();
-    axios.put("http://localhost:3010/auth",profile)
+    axios.post(`http://localhost:3010/user/${this.state.user._id}`,{data})
     .then(res => {
       console.log(res)
       return <Redirect to="/Profile"></Redirect>
@@ -23,35 +25,36 @@ export default class EditProfile extends React.Component {
     .catch(e=>console.log("Error",e))
   }
 
-  handleChangeProf= (event)=> {
-
+  handleChangeProf= (event, type)=> {
+    let user = Object.assign({}, this.state.user)
+    user[type] = event.target.value;
+    this.setState({user})
   }
 
   render(){
-    let user= this.props.user
+    let {user}= this.state;
     return (
       <div>
         <hr />
         <h3>Edita tu Perfil:</h3>
         <form onSubmit={this.handleFormSubmit}>
           <label>Nombre de Usuario</label>
-          <input type="text" name="username" value={user.username} onChange={e => this.handleChangeProf(e)}/>
+          <input type="text" name="username" value={user.username} onChange={e => this.handleChangeProf(e, "username")}/>
           {/* <label>Imagen:</label>
           <textarea name="description" value={user.image} onChange={e => this.handleChangeProf(e)} /> */}
           <label>Descripción</label>
-          <textarea name="description" value={user.description} onChange={e => this.handleChangeProf(e)} />
+          <textarea name="description" value={user.description} onChange={e => this.handleChangeProf(e, "description")} />
           <label>Género</label>
-          <select name="gender" value={user.gender} onChange={e => this.handleChangeProf(e)}>
+          <select name="gender" value={user.gender} onChange={e => this.handleChangeProf(e, "gender")}>
             <option value="male">Hombre</option>
             <option value="female">Mujer</option>
-
           </select>
           <label>Domicilio</label>
-          <input name="location" value={user.location} onChange={e => this.handleChangeProf(e)} />
+          <input name="location" value={user.location} onChange={e => this.handleChangeProf(e, "location")} />
           <label>Teléfono</label>
-          <input name="telephone" value={user.telephone} onChange={e => this.handleChangeProf(e)} />
+          <input name="telephone" value={user.telephone} onChange={e => this.handleChangeProf(e, "telephone")} />
           
-          <button onClick={this.editProfile}>Submit</button>
+          <button type="submit">Submit</button>
 
         </form>
       </div>
