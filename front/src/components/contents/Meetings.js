@@ -1,65 +1,38 @@
 import React, { Component } from 'react';
-import { GoogleApiWrapper, InfoWindow, Map, Marker } from 'google-maps-react';
+import { Map, InfoWindow, Marker, GoogleApiWrapper } from 'google-maps-react';
+import { Link } from 'react-router-dom';
 
 
-class Meetings extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      showingInfoWindow: false,
-      activeMarker: {},
-      selectedPlace: {}
-    }
-    // binding this to event-handler functions
-    this.onMarkerClick = this.onMarkerClick.bind(this);
-    this.onMapClick = this.onMapClick.bind(this);
-  }
-  onMarkerClick = (props, marker, e) => {
-    this.setState({
-      selectedPlace: props,
-      activeMarker: marker,
-      showingInfoWindow: true
-    });
-  }
-  onMapClick = (props) => {
-    if (this.state.showingInfoWindow) {
-      this.setState({
-        showingInfoWindow: false,
-        activeMarker: null
-      });
-    }
-  }
+
+class Meetings extends Component {
+
   render() {
     const style = {
-      width: '50vw',
-      height: '75vh',
-      'marginLeft': 'auto',
-      'marginRight': 'auto'
+      width: '600px',
+      height: '100%',
+      marginRight: '750px',
     }
     return (
-      <Map
-        item
-        xs = { 12 }
-        style = { style }
-        google = { this.props.google }
-        onClick = { this.onMapClick }
-        zoom = { 14 }
-        initialCenter = {{ lat: 40.4378698, lng: -3.8196204 }}
-      >
-        <Marker
-          onClick = { this.onMarkerClick }
-          title = { 'Changing Colors Garage' }
-          position = {{ lat: 40.4378698, lng: -3.8196204 }}
-          name = { 'Changing Colors Garage' }
-        />
-        <InfoWindow
-          marker = { this.state.activeMarker }
-          visible = { this.state.showingInfoWindow }
-        >
-          
-        </InfoWindow>
-      </Map>
-    );
+      <div>
+        <h1>Quedadas</h1>
+          <hr/>
+            <div >
+              <Map style = {style} google={this.props.google} zoom={14} initialCenter = {{ lat: 40.4169473, lng: -3.7057172 }}>
+                <Marker onClick={this.onMarkerClick} name={'Current location'} />
+
+                <InfoWindow onClose={this.onInfoWindowClose}>
+                        {/* <div>
+                            <h1>{this.state.selectedPlace.name}</h1>
+                        </div> */}
+                </InfoWindow>
+              </Map>
+            </div>
+            <div>
+              <Link to='/Createmeeting'>Crea tu quedada</Link>
+                  {/* Lista Quedadas */}
+              </div>
+      </div>
+    )
   }
 }
 

@@ -7,6 +7,7 @@ import Login from './components/auth/Login';
 import AuthService from './components/auth/AuthService';
 import Profile from './components/contents/Profile';
 import Meetings from './components/contents/Meetings';
+import Createmeeting from './components/contents/CreateMeeting';
 
 class App extends Component {
 
@@ -51,10 +52,11 @@ class App extends Component {
     if(this.state.loggedInUser){
       return (
         <div className="App">
-          <header className="App-header">
+          <header>
             <Navbar userInSession={this.state.loggedInUser} logout={this.logout} />
             <Route exact path='/profile' render={() => <Profile userInSession={this.state.loggedInUser}/>}/>
-            <Route exact path='/Meetings' render={() => <Meetings getUser={this.getTheUser}/>}/>
+            <Route exact path='/Meetings' render={() => <Meetings/>}/>
+            <Route exact path='/Createmeeting' render={() => <Createmeeting/>}/>
           </header>
         </div>
       );
