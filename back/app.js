@@ -72,6 +72,7 @@ app.use('/auth', authRoutes);
 
 const genericCRUD = require('./routes/genericCRUD');
 app.use('/user', genericCRUD(require('./models/User')));
+app.use('/meetings', genericCRUD(require('./models/Meetings')));
       
 
 module.exports = app;

@@ -54,10 +54,12 @@ class App extends Component {
         <div className="App">
           <header>
             <Navbar userInSession={this.state.loggedInUser} logout={this.logout} />
-            <Route exact path='/profile' render={() => <Profile userInSession={this.state.loggedInUser}/>}/>
-            <Route exact path='/Meetings' render={() => <Meetings/>}/>
-            <Route exact path='/Createmeeting' render={() => <Createmeeting/>}/>
-          </header>
+             </header>
+          <div>
+          <Route exact path='/profile' render={() => <Profile userInSession={this.state.loggedInUser}/>}/>
+          <Route exact path='/Meetings' render={() => <Meetings/>}/>
+          <Route exact path='/Createmeeting' render={() => <Createmeeting/>}/>
+          </div>
         </div>
       );
     } else {
