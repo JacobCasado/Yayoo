@@ -1,4 +1,5 @@
 require('dotenv').config();
+require('./configs/cloudinary');
 
 const bodyParser   = require('body-parser');
 const cookieParser = require('cookie-parser');
@@ -69,10 +70,11 @@ require('./passport')(app);
 
 const authRoutes = require('./routes/auth');
 app.use('/auth', authRoutes);
-
+const images = require ('./routes/images');
 const genericCRUD = require('./routes/genericCRUD');
 app.use('/user', genericCRUD(require('./models/User')));
 app.use('/meetings', genericCRUD(require('./models/Meetings')));
+app.use('/images', genericCRUD(require('./models/Images')));
       
 
 module.exports = app;

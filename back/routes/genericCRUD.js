@@ -27,8 +27,6 @@ const simpleCrud = (Model, extensionFn) => {
             .catch(e => next(e))
     })
     
-    
-    
     // CRUD: UPDATE
      router.post('/:id',(req,res,next) => {
         const {id} = req.params;
