@@ -8,6 +8,7 @@ import AuthService from './components/auth/AuthService';
 import Profile from './components/contents/Profile';
 import Meetings from './components/contents/Meetings';
 import Createmeeting from './components/contents/CreateMeeting';
+import Gallery from './components/contents/Gallery';
 
 class App extends Component {
 
@@ -59,6 +60,7 @@ class App extends Component {
           <Route exact path='/profile' render={() => <Profile userInSession={this.state.loggedInUser}/>}/>
           <Route exact path='/Meetings' render={() => <Meetings/>}/>
           <Route exact path='/Createmeeting' render={() => <Createmeeting/>}/>
+          <Route exact path='/Gallery' render={() => <Gallery/>}/>
           </div>
         </div>
       );

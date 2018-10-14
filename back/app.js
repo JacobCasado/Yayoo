@@ -74,7 +74,7 @@ const images = require ('./routes/images');
 const genericCRUD = require('./routes/genericCRUD');
 app.use('/user', genericCRUD(require('./models/User')));
 app.use('/meetings', genericCRUD(require('./models/Meetings')));
-app.use('/images', genericCRUD(require('./models/Images')));
+app.use('/images', images);
       
 
 module.exports = app;

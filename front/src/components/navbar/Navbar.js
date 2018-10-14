@@ -24,6 +24,7 @@ class Navbar extends Component {
           <ul>
             <li><Link to='/profile'>Perfil</Link></li>
             <li><Link to='/Meetings'>Quedadas</Link></li>
+            <li><Link to='/Gallery'>FotoNieto</Link></li>
             <li><button onClick={this.handleLogout}>Logout</button></li>
           </ul>
           {/* <h2>¡Bienvenido {this.state.loggedInUser.username}!</h2> */}

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import EditProfile from './EditProfile';
+import Gallery from './Gallery';
 
 class Profile extends Component {
   render() {
