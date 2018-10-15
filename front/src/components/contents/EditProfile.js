@@ -1,13 +1,15 @@
 import React from "react";
 import { Redirect } from "react-router-dom";
 import axios from 'axios';
+import UploadGallery from "./UploadGallery";
+
 
 export default class EditProfile extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-        user: {}
     }
+    this.service = new UploadGallery();
   }
 
   componentDidMount = () => {
@@ -15,9 +17,25 @@ export default class EditProfile extends React.Component {
   }
 
   handleFormSubmit=(event)=>{
-    const data = this.state.user;
     event.preventDefault();
-    axios.post(`http://localhost:3010/user/${this.state.user._id}`,{data})
+    const {user, image} = this.state;
+    //const {image} = this.state;
+
+    console.log(user);
+    const formData = new FormData();
+    formData.append("image", image)
+    formData.append("username", user.username);
+    formData.append("description", user.description);
+    formData.append("gender", user.gender);
+    formData.append("location", user.location);
+    formData.append("telephone", user.telephone);
+    
+    return axios.post(`http://localhost:3010/user/${this.state.user._id}`,formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+      withCredentials: true
+    })
     .then(res => {
       console.log(res)
       return <Redirect to="/Profile"></Redirect>
@@ -33,19 +51,21 @@ export default class EditProfile extends React.Component {
 
   render(){
     let {user}= this.state;
-    return (
+    return user ? (
       <div>
-        <hr />
-        <h3>Edita tu Perfil:</h3>
+        <h1>Edita tu Perfil:</h1>
+        <div key={user._id}>
+          <img src={user.image} alt=""/> 
+        </div>
+        <div>
         <form onSubmit={this.handleFormSubmit}>
           <label>Nombre de Usuario</label>
           <input type="text" name="username" value={user.username} onChange={e => this.handleChangeProf(e, "username")}/>
-          {/* <label>Imagen:</label>
-          <textarea name="description" value={user.image} onChange={e => this.handleChangeProf(e)} /> */}
           <label>Descripción</label>
           <textarea name="description" value={user.description} onChange={e => this.handleChangeProf(e, "description")} />
           <label>Género</label>
           <select name="gender" value={user.gender} onChange={e => this.handleChangeProf(e, "gender")}>
+            <option value="-">-</option>
             <option value="male">Hombre</option>
             <option value="female">Mujer</option>
           </select>
@@ -53,12 +73,23 @@ export default class EditProfile extends React.Component {
           <input name="location" value={user.location} onChange={e => this.handleChangeProf(e, "location")} />
           <label>Teléfono</label>
           <input name="telephone" value={user.telephone} onChange={e => this.handleChangeProf(e, "telephone")} />
+          <label>Imagen</label>
+          <input
+              type="file"
+              name="image"
+              onChange={e =>
+                this.setState({
+                  image: e.target.files[0]
+                })
+              }
+              />
           
           <button type="submit">Submit</button>
 
         </form>
+        </div>
       </div>
-    )
+    ) : 'Loading';
   }
 
 }

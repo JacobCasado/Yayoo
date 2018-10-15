@@ -12,7 +12,6 @@ router.get('/', (req, res, next) => {
 
 //CREATE NEW IMAGE
 router.post('/', uploadCloud.single('image'), (req, res, next) => {
-    console.log(req.file);
     let {description} = req.body;
     let image = req.file.secure_url
     console.log("NEW IMAGE ENTERS");

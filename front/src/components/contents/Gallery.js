@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Redirect } from "react-router-dom";
 import axios from "axios";
 import UploadGallery from "./UploadGallery";
 
@@ -10,16 +9,10 @@ export default class Gallery extends Component {
     this.service = new UploadGallery();
   }
 
-  handleChange(e) {
-    /* this.setState({
-      image: e.target.files[0]
-    }); */
-  }
-
   handleSubmit(e) {
     e.preventDefault();
     let { description, image } = this.state;
-    if (description === "" || image == "")
+    if (description === "" || image === "")
       return this.setState({ error: "Empty Description" });
     this.service.addPicture(image, description).then(res => {
       this.getAllImages();
@@ -55,22 +48,19 @@ export default class Gallery extends Component {
     return (
       <div>
         <div>
+          <h1>FotoNieto</h1>
           <form onSubmit={e => this.handleSubmit(e)}>
             <p style={{ color: "red" }}>{error}</p>
-            {/* <label>Usuario</label>
-                  <input type="text" name='username' placeholder='Product Name' value={username} onChange={(e) => this.setState({ username: e.target.value })} /> */}
             <label>Descripción</label>
             <input
               type="text"
               name="description"
-              placeholder="Product Description"
               onChange={e => this.setState({ description: e.target.value })}
             />
             <label>Imagen</label>
             <input
               type="file"
               name="image"
-              placeholder="Product Photo"
               onChange={e =>
                 this.setState({
                   image: e.target.files[0]
@@ -80,8 +70,7 @@ export default class Gallery extends Component {
             <button onClick={e => this.handleSubmit(e)}>Submit</button>
           </form>
         </div>
-
-        { gallery}
+        { gallery }
       </div>
     );
   }

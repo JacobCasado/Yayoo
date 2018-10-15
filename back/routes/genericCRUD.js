@@ -1,6 +1,8 @@
 const express = require('express');
 const _ = require('lodash');
 
+const uploadCloud = require('../configs/cloudinary.js');
+
 const simpleCrud = (Model, extensionFn) => {
     let router  = express.Router();
 
@@ -28,10 +30,12 @@ const simpleCrud = (Model, extensionFn) => {
     })
     
     // CRUD: UPDATE
-     router.post('/:id',(req,res,next) => {
+     router.post('/:id',uploadCloud.single('image'),(req,res,next) => {
+         console.log(req.body);
         const {id} = req.params;
-        const {data} = req.body;
-        console.log(data);
+        const {username,description,gender,location,telephone} = req.body;
+        const image = req.file.secure_url;
+        const data = {username,description,gender,location,telephone,image}
         Model.findByIdAndUpdate(id, data ,{new:true})
             .then( obj => {
                 return res.status(200).json(obj);

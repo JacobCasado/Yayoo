@@ -18,8 +18,6 @@ export default class UploadGallery {
     formData.append("image", image)
     formData.append("description", description)
 
-    //console.log(formData);
-    //console.log('DEBUG formData', formData.get("image"));
     return this.service
       .post('/', formData, {
         headers: {
@@ -34,8 +32,5 @@ export default class UploadGallery {
     .then(response => response.data)
   }
 
-  getAllProducts = () => {
-    return this.service.get('/main')
-    .then(response => response.data)
-  }
+ 
 }
