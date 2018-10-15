@@ -13,17 +13,15 @@ export default class UploadGallery {
     });
   }
 
-  addPicture(image, username, description) {
-    console.log(image, username, description);
+  addPicture(image, description) {
     const formData = new FormData();
     formData.append("image", image)
-    formData.append("username", username)
     formData.append("description", description)
 
-    console.log('DEBUG formData', formData.get("image"));
-    
+    //console.log(formData);
+    //console.log('DEBUG formData', formData.get("image"));
     return this.service
-      .post('', formData, {
+      .post('/', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },

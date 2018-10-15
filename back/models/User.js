@@ -8,7 +8,8 @@ const userSchema = new Schema({
   description: String,
   gender: {type: String, enum: ['male', 'female']},
   location: String,
-  telephone: Number
+  telephone: Number,
+  photos: []
 }, {
   timestamps: {
     createdAt: 'created_at',
