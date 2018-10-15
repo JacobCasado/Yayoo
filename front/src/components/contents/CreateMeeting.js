@@ -2,6 +2,8 @@ import React from 'react';
 import { Redirect } from "react-router-dom";
 import axios from 'axios';
 import Meetings from './Meetings';
+import Map from './maps/Map';
+import Geolocalize from './maps/Geolocalize';
 
 
 export default class CreateMeeting extends React.Component {
@@ -55,6 +57,22 @@ export default class CreateMeeting extends React.Component {
           <button type="submit">Submit</button>
 
         </form>
+        <div>
+        <Map
+        id="myMap"
+        options={{
+          center: { lat: 40.4169473, lng: -3.7057172 },
+          zoom: 14
+        }}
+        onMapLoad={map => {
+          var marker = new window.google.maps.Marker({
+            position: { lat: 40.4169473, lng: -3.7057172 },
+            map: map,
+            title: 'Hola Madrid!'
+          });
+        }}
+        />
+        </div>
       </div>
     )
   }

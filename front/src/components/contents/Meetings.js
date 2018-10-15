@@ -1,9 +1,9 @@
 import React, { Component } from "react";
-import { Map, InfoWindow, Marker, GoogleApiWrapper } from "google-maps-react";
+import Map from './maps/Map';
 import { Link } from "react-router-dom";
 import axios from "axios";
 
-class Meetings extends Component {
+export default class Meetings extends Component {
   constructor() {
     super();
     this.state = { listOfMeetings: [] };
@@ -30,35 +30,35 @@ class Meetings extends Component {
       <div>
         <h1>Quedadas</h1>
         <hr />
-        <div class="map-container">
-          <Map
-            style={style}
-            google={this.props.google}
-            zoom={14}
-            initialCenter={{ lat: 40.4169473, lng: -3.7057172 }}
-          >
-            <Marker onClick={this.onMarkerClick} name={"Current location"} />
-
-            <InfoWindow onClose={this.onInfoWindowClose}>
-              {/* <div>
-                            <h1>{this.state.selectedPlace.name}</h1>
-                        </div> */}
-            </InfoWindow>
-          </Map>
+        <div>
+        <Map
+        id="myMap"
+        options={{
+          center: { lat: 40.4169473, lng: -3.7057172 },
+          zoom: 14
+        }}
+        onMapLoad={map => {
+          var marker = new window.google.maps.Marker({
+            position: { lat: 40.4169473, lng: -3.7057172 },
+            map: map,
+            title: 'Hola Madrid!'
+          });
+        }}
+        />
         </div>
         <div>
           <Link to="/Createmeeting">Crea tu quedada</Link>
           <div />
           <div>
-            <div style={{ width: "60%", float: "right" }}>
+            <div>
               {this.state.listOfMeetings.map((meetings, index) => {
                 return (
                   <div key={meetings._id}>
-                    <p style={{ maxWidth: "400px" }}>{meetings.name} </p>
-                    <p style={{ maxWidth: "400px" }}>{meetings.description} </p>
-                    <p style={{ maxWidth: "400px" }}>{meetings.place} </p>
+                    <p>{meetings.name} </p>
+                    <p>{meetings.description} </p>
+                    <p>{meetings.place} </p>
                     {/* <p style={{ maxWidth: "400px" }}>{meetings.location} </p> */}
-                    <p style={{ maxWidth: "400px" }}>{meetings.date} </p>
+                    <p>{meetings.date} </p>
                   </div>
                 );
               })}
@@ -69,7 +69,3 @@ class Meetings extends Component {
     );
   }
 }
-
-export default GoogleApiWrapper({
-  apiKey: "AIzaSyCtFGWWXJyAzch--tvKAt82xqXSj7W383M"
-})(Meetings);
