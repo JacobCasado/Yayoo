@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Map from './maps/Map';
+import Map from "./maps/Map";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
@@ -22,29 +22,16 @@ export default class Meetings extends Component {
   }
 
   render() {
-    const style = {
-      width: "600px",
-      height: "100%"
-    };
     return (
       <div>
         <h1>Quedadas</h1>
         <hr />
         <div>
-        <Map
-        id="myMap"
-        options={{
-          center: { lat: 40.4169473, lng: -3.7057172 },
-          zoom: 14
-        }}
-        onMapLoad={map => {
-          var marker = new window.google.maps.Marker({
-            position: { lat: 40.4169473, lng: -3.7057172 },
-            map: map,
-            title: 'Hola Madrid!'
-          });
-        }}
-        />
+          {this.state.listOfMeetings.length > 0 ? (
+            <Map id="myMap" meetings={this.state.listOfMeetings} />
+          ) : (
+            ""
+          )}
         </div>
         <div>
           <Link to="/Createmeeting">Crea tu quedada</Link>
@@ -57,8 +44,8 @@ export default class Meetings extends Component {
                     <p>{meetings.name} </p>
                     <p>{meetings.description} </p>
                     <p>{meetings.place} </p>
-                    {/* <p style={{ maxWidth: "400px" }}>{meetings.location} </p> */}
                     <p>{meetings.date} </p>
+                    <p>{meetings.time}</p>
                   </div>
                 );
               })}

@@ -24,6 +24,9 @@ const simpleCrud = (Model, extensionFn) => {
     // CRUD: CREATE
     router.post('/',(req,res,next) => {
         const object = _.pickBy(req.body.data, (e,k) => paths.includes(k));
+        object.location = {
+            coordinates: [req.body.data.lat, req.body.data.lng]
+        }
         Model.create(object)
             .then( obj => res.status(200).json(obj))
             .catch(e => next(e))

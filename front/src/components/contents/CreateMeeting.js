@@ -1,10 +1,7 @@
 import React from 'react';
 import { Redirect } from "react-router-dom";
 import axios from 'axios';
-import Meetings from './Meetings';
-import Map from './maps/Map';
-import Geolocalize from './maps/Geolocalize';
-
+import Map from './maps/Map.js';
 
 export default class CreateMeeting extends React.Component {
 
@@ -22,6 +19,8 @@ export default class CreateMeeting extends React.Component {
 
   handleFormSubmit=(event)=>{
     const data = this.state.meetings;
+    data['lat'] = this.state.lat;
+    data['lng'] = this.state.lng;
     event.preventDefault();
     axios.post(`http://localhost:3010/meetings/`,{data})
     .then(res => {
@@ -37,6 +36,11 @@ export default class CreateMeeting extends React.Component {
     this.setState({meetings})
   }
 
+  handleClickMap = (event) => {
+    this.setState({lat:event.latLng.lat(),lng:event.latLng.lng()})
+    //console.log(event.latLng.lat(), event.latLng.lng())
+  }
+
   render() {
     if(this.state.redirect) return <Redirect to="/Meetings" />
     return (
@@ -49,29 +53,16 @@ export default class CreateMeeting extends React.Component {
           <textarea name="description" onChange={e => this.handleChangeProf(e, "description")} />
           <label>Lugar</label>
           <input type="text" name="place" onChange={e => this.handleChangeProf(e, "place")}/>
-          <label>Localización</label>
-          <input name="location" onChange={e => this.handleChangeProf(e, "location")} />
           <label>Fecha</label>
           <input type="date" name="date" onChange={e => this.handleChangeProf(e, "date")} />
+          <label>Hora:</label>
+          <input type="time" name="time" onChange={e => this.handleChangeProf(e, "time")} min="8:00" max="20:00" required />
 
           <button type="submit">Submit</button>
 
         </form>
         <div>
-        <Map
-        id="myMap"
-        options={{
-          center: { lat: 40.4169473, lng: -3.7057172 },
-          zoom: 14
-        }}
-        onMapLoad={map => {
-          var marker = new window.google.maps.Marker({
-            position: { lat: 40.4169473, lng: -3.7057172 },
-            map: map,
-            title: 'Hola Madrid!'
-          });
-        }}
-        />
+        <Map id="myMap" handleClick={this.handleClickMap}/>
         </div>
       </div>
     )
