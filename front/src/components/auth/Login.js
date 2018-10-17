@@ -39,25 +39,35 @@ class Login extends Component {
 
   render() {
 
-    return (<div>
-      <h3>Por favor, logueate para entrar.</h3>
+    return (
+    <div className="container-fluid">
+    <div className="row">
+    <div className="col-md-6">
+
+      <h3>Por favor, loguéate para entrar.</h3>
 
       <form onSubmit={this.handleFormSubmit}>
-        <fieldset>
-          <label>Username:</label>
-          <input type="text" name="username" value={this.state.username} onChange={e => this.handleChange(e)} />
-        </fieldset>
+        <div className="form-group">
+          <label for="exampleFormControlInput1">Nombre de Usuario:</label>
+          <input className="form-control" id="exampleFormControlInput1" type="text" name="username" value={this.state.username} onChange={e => this.handleChange(e)} />
+        </div>
 
-        <fieldset>
-          <label>Password:</label>
-          <input type="password" name="password" value={this.state.password} onChange={e => this.handleChange(e)} />
-        </fieldset>
+        <div className="form-group">
+          <label for="exampleInputPassword1">Contraseña:</label>
+          <input className="form-control" id="exampleInputPassword1" type="password" name="password" value={this.state.password} onChange={e => this.handleChange(e)} />
+        </div>
 
-        <input type="submit" value="Login" />
+        <button type="submit" className="btn btn-success" value="Sign up">Loguéate</button>
       </form>
 
       <h1>{this.state.error ? 'Error' : ''}</h1>
-    </div>)
+    </div>
+    <div className="col-md-6">
+          <img src="/images/YayooLogo.png" alt="Yayoo Logo"/>
+    </div>
+    </div>
+    </div>
+    )
   }
 }
 

@@ -54,8 +54,8 @@ export default class EditProfile extends React.Component {
     return user ? (
       <div>
         <h1>Edita tu Perfil:</h1>
-        <div key={user._id}>
-          <img src={user.image} alt=""/> 
+        <div className="text-center" key={user._id}>
+          <img src={user.image} className="rounded" alt=""/> 
         </div>
         <div>
         <form onSubmit={this.handleFormSubmit}>

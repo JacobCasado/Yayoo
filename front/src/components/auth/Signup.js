@@ -33,37 +33,43 @@ class Signup extends Component {
 
   render() {
     return (
-      <div>
-      <div>
-        <h3>Sign up</h3>
+      <div className="container-fluid">
+      <div className="row">
+      <div className="col-md-6">
+
+        <h3>Regístrate</h3>
 
         <form onSubmit={this.handleFormSubmit}>
-          <fieldset>
-            <label>Username:</label>
+            <div className="form-group">
+            <label for="exampleFormControlInput1">Nombre de Usuario:</label>
             <input
+              className="form-control" id="exampleFormControlInput1"
               type="text"
               name="username"
               value={this.state.username}
               onChange={e => this.handleChange(e)}
-            />
-          </fieldset>
-          <fieldset>
-            <label>Password:</label>
+              />
+            </div>
+            <div className="form-group">
+            <label for="exampleInputPassword1">Contraseña:</label>
             <input
+              className="form-control" id="exampleInputPassword1"
               type="password"
               name="password"
               value={this.state.password}
               onChange={e => this.handleChange(e)}
-            />
-          </fieldset>
+              />
+            </div>
           
-          <input type="submit" value="Sign up" />
+          
+          <button type="submit" className="btn btn-success" value="Sign up">Subscríbete</button>
         </form>
-        </div>
-        <div>
-          <h2>Hola!</h2>
-          <h3>¡Bienvenido a Yayoo!</h3>
-        </div>
+      </div>
+      
+      <div className="col-md-6">
+          <img src="/images/YayooLogo.png" alt="Yayoo Logo"/>
+      </div>
+      </div>
       </div>
     );
   }

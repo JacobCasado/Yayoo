@@ -20,26 +20,24 @@ class Navbar extends Component {
   render() {
     if (this.state.loggedInUser) {
       return (
-        <nav className="navbar navbar-expand-lg navbar-light bg-light">
+        <nav className="navbar navbar-expand-lg nav-type">
           <ul className="navbar-nav">
-            <li className="nav-item active"><Link to='/profile'>Perfil</Link></li>
-            <li className="nav-item active"><Link to='/Meetings'>Quedadas</Link></li>
-            <li className="nav-item active"><Link to='/Gallery'>FotoNieto</Link></li>
-            <li className="nav-item active"><button class="btn btn-outline-success my-2 my-sm-0" type="submit" onClick={this.handleLogout}>Logout</button></li>
+            <li className="nav-item active nav-class"><Link className="nav-link nav-class" to='/profile'>Perfil</Link></li>
+            <li className="nav-item active nav-class"><Link className="nav-link nav-class" to='/Meetings'>Quedadas</Link></li>
+            <li className="nav-item active nav-class"><Link className="nav-link nav-class" to='/Gallery'>FotoNieto</Link></li>
+            <li className="nav-item active nav-class"><button className="btn btn-warning my-2 my-sm-0" type="submit" onClick={this.handleLogout}>Logout</button></li>
           </ul>
-          {/* <h2>¡Bienvenido {this.state.loggedInUser.username}!</h2> */}
         </nav>
       )
     } else {
       return (
-        <div>
-          <nav className="navbar navbar-expand-lg navbar-light bg-light">
+          <nav className="navbar navbar-expand-lg nav-type">
             <ul className="navbar-nav">
-            <li className="nav-item active"><Link to='/signup'>Signup</Link></li>
-            <li className="nav-item active"><Link to='/login'>Login</Link></li>
+            <li className="nav-item active nav-class"><Link className="nav-link nav-class" to='/signup'>Regístrate</Link></li>
+            <li className="nav-item active nav-class"><Link className="nav-link nav-class" to='/login'>Loguéate</Link></li>
             </ul>
           </nav>
-        </div>
+        
       )
     }
   }
