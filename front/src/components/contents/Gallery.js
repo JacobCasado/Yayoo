@@ -38,7 +38,7 @@ export default class Gallery extends Component {
           return (
             <div key={images._id}>
               <img src={images.image} alt=""/>
-              <p>{images.username} </p>
+              <p>{images.user.username} </p>
               <p>{images.description} </p>
             </div>
           )

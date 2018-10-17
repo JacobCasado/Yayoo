@@ -5,7 +5,8 @@ const Images = require('../models/Images');
 const uploadCloud = require('../configs/cloudinary.js');
 
 router.get('/', (req, res, next) => {
-    return Images.find({username: req.user.username})
+    return Images.find()
+    .populate('user')
     .then(data => {console.log(data); return res.status(200).json(data)})
     .catch(err => next(err));
 })
@@ -17,7 +18,7 @@ router.post('/', uploadCloud.single('image'), (req, res, next) => {
     console.log("NEW IMAGE ENTERS");
     
     return new Images({
-        username: req.user.username,
+        user: req.user._id,
         description,
         image
     }).save()
