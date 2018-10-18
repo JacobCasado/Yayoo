@@ -21,7 +21,7 @@ export default class Gallery extends Component {
 
   getAllImages = () => {
     axios
-      .get(`http://localhost:3010/images/`, { withCredentials: true })
+      .get(`${process.env.REACT_APP_API_URL}/images/`, { withCredentials: true })
       .then(responseFromApi => {
         this.setState({
           listOfImages: responseFromApi.data

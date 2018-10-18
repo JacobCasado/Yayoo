@@ -75,6 +75,9 @@ const genericCRUD = require('./routes/genericCRUD');
 app.use('/user', genericCRUD(require('./models/User')));
 app.use('/meetings', genericCRUD(require('./models/Meetings')));
 app.use('/images', images);
-      
+app.use((req, res, next) => {
+  // If no routes match, send them the React HTML.
+   res.sendFile(__dirname + "/public/index.html");
+  });     
 
 module.exports = app;

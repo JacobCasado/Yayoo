@@ -10,7 +10,7 @@ export default class Meetings extends Component {
   }
 
   getAllMeetings = () => {
-    axios.get(`http://localhost:3010/meetings/`).then(responseFromApi => {
+    axios.get(`${process.env.REACT_APP_API_URL}/meetings/`).then(responseFromApi => {
       this.setState({
         listOfMeetings: responseFromApi.data
       });

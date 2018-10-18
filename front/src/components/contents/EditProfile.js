@@ -30,7 +30,7 @@ export default class EditProfile extends React.Component {
     formData.append("location", user.location);
     formData.append("telephone", user.telephone);
     
-    return axios.post(`http://localhost:3010/user/${this.state.user._id}`,formData, {
+    return axios.post(`${process.env.REACT_APP_API_URL}/user/${this.state.user._id}`,formData, {
       headers: {
         'Content-Type': 'multipart/form-data',
       },

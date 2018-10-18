@@ -3,12 +3,12 @@ import axios from 'axios';
 export default class UploadGallery {
   constructor() {
     this.service = axios.create({
-      baseURL: 'http://localhost:3010/images',
+      baseURL: `${process.env.REACT_APP_API_URL}/images`,
       withCredentials: true
     });
 
     this.service2 = axios.create({
-      baseURL: 'http://localhost:3010/EditProfile',
+      baseURL: `${process.env.REACT_APP_API_URL}/EditProfile`,
       withCredentials: true
     });
   }
