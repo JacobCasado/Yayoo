@@ -27,7 +27,7 @@ export default class Meetings extends Component {
         <h1>Quedadas</h1>
         <div className="container-fluid">
         <div className="row">
-        <div className="col-md-6">
+        <div className="col-md-6" style={{marginTop:"100px"}}>
 
           {this.state.listOfMeetings.length > 0 ? (
             <Map id="myMap" meetings={this.state.listOfMeetings} />
@@ -35,19 +35,20 @@ export default class Meetings extends Component {
               ""
               )}
         </div>
-        <div className="col-md-6">
+        <div className="col-md-6" style={{marginTop:"50px"}}>
         <button className="btn btn-success btn-class"><Link className="btn-class" to="/Createmeeting">Crea tu quedada</Link></button>
-          <div />
           <div>
             <div>
               {this.state.listOfMeetings.map((meetings, index) => {
                 return (
-                  <div key={meetings._id}>
-                    <p>{meetings.name} </p>
-                    <p>{meetings.description} </p>
-                    <p>{meetings.place} </p>
-                    <p>{meetings.date} </p>
-                    <p>{meetings.time}</p>
+                  <div className="card" style={{margin: "5px"}}>
+                  <div className="card-body" key={meetings._id}>
+                    <h4><b>·{meetings.name}·</b></h4>
+                    <p>Descripción: <strong className="size">{meetings.description}</strong></p>
+                    <p>Lugar: <strong className="size">{meetings.place}</strong></p>
+                    <p>Día: <strong className="size">{meetings.date}</strong></p>
+                    <p>Hora: <strong className="size">{meetings.time}</strong></p>
+                  </div>
                   </div>
                 );
               })}

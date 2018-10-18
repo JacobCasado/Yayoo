@@ -65,14 +65,14 @@ export default class Gallery extends Component {
           <form onSubmit={e => this.handleSubmit(e)}>
           <div className="form-group" style={{marginTop:"50px"}}>
             <p style={{ color: "red" }}>{error}</p>
-            <label style={{padding: "8px"}} for="exampleFormControlTextarea1">Descripción</label>
+            <label className="size" style={{padding: "8px"}} for="exampleFormControlTextarea1">Descripción</label>
             <input
               className="" id="exampleFormControlTextarea1" rows="3"
               type="text"
               name="description"
               onChange={e => this.setState({ description: e.target.value })}
               />
-            <label style={{padding: "8px"}} for="exampleFormControlFile1">Imagen</label>
+            <label className="size" style={{padding: "8px"}} for="exampleFormControlFile1">Imagen</label>
             <input
               className=" file" id="exampleFormControlFile1"
               type="file"
@@ -83,7 +83,7 @@ export default class Gallery extends Component {
                 })
               }
               />
-            <button className="btn btn-success" onClick={e => this.handleSubmit(e)}>Compartir</button>
+            <button className="btn btn-success btn-class" onClick={e => this.handleSubmit(e)}>Compartir</button>
               </div>
           </form>
         </div>

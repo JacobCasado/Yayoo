@@ -22,10 +22,10 @@ class Navbar extends Component {
       return (
         <nav className="navbar navbar-expand-lg nav-type">
           <ul className="navbar-nav">
-            <li className="nav-item active nav-class"><Link className="nav-link nav-class" to='/profile'>Perfil</Link></li>
-            <li className="nav-item active nav-class"><Link className="nav-link nav-class" to='/Meetings'>Quedadas</Link></li>
-            <li className="nav-item active nav-class"><Link className="nav-link nav-class" to='/Gallery'>FotoNieto</Link></li>
-            <li className="nav-item active nav-class"><button className="btn btn-warning my-2 my-sm-0" type="submit" onClick={this.handleLogout}>Logout</button></li>
+            <li className="nav-item active nav-class"><Link className="nav-link nav-class" style={{fontSize: "22px"}} to='/profile'><b>Perfil</b></Link></li>
+            <li className="nav-item active nav-class"><Link className="nav-link nav-class" style={{fontSize: "22px"}} to='/Meetings'><b>Quedadas</b></Link></li>
+            <li className="nav-item active nav-class"><Link className="nav-link nav-class" style={{fontSize: "22px"}} to='/Gallery'><b>FotoNieto</b></Link></li>
+            <li className="nav-item active nav-class"><button className="btn btn-warning my-2 my-sm-0" style={{fontSize: "22px"}} type="submit" onClick={this.handleLogout}><b>Desconectarse</b></button></li>
           </ul>
         </nav>
       )
@@ -33,8 +33,8 @@ class Navbar extends Component {
       return (
           <nav className="navbar navbar-expand-lg nav-type">
             <ul className="navbar-nav">
-            <li className="nav-item active nav-class"><Link className="nav-link nav-class" to='/signup'>Regístrate</Link></li>
-            <li className="nav-item active nav-class"><Link className="nav-link nav-class" to='/login'>Loguéate</Link></li>
+            <li className="nav-item active nav-class"><Link className="nav-link nav-class" style={{fontSize: "22px"}} to='/signup'><b>Regístrate</b></Link></li>
+            <li className="nav-item active nav-class"><Link className="nav-link nav-class" style={{fontSize: "22px"}} to='/login'><b>Loguéate</b></Link></li>
             </ul>
           </nav>
         

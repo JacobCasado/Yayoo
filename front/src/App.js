@@ -9,6 +9,7 @@ import Profile from './components/contents/Profile';
 import Meetings from './components/contents/Meetings';
 import Createmeeting from './components/contents/CreateMeeting';
 import Gallery from './components/contents/Gallery';
+import Home from "./components/contents/Home";
 
 class App extends Component {
 
@@ -57,8 +58,11 @@ class App extends Component {
         <div className="App">
           <header>
             <Navbar userInSession={this.state.loggedInUser} logout={this.logout} />
-             </header>
+          </header>
           <div>
+          <Switch>
+            <Route exact path="/" component={Home} />
+          </Switch>
           <Route exact path='/profile' render={() => <Profile userInSession={this.state.loggedInUser}/>}/>
           <Route exact path='/Meetings' render={() => <Meetings/>}/>
           <Route exact path='/Createmeeting' render={() => <Createmeeting/>}/>
@@ -71,11 +75,14 @@ class App extends Component {
         <div className="App">
           <header>
             <Navbar userInSession={this.state.loggedInUser} logout={this.logout} />
+          </header>
+            <div>
             <Switch>
+              <Route exact path="/" component={Home} />
+            </Switch>
               <Route exact path='/signup' render={() => <Signup getUser={this.getTheUser}/>}/>
               <Route exact path='/login' render={() => <Login getUser={this.getTheUser}/>}/>
-            </Switch>
-          </header>
+            </div>
         </div>
       );
     }

@@ -39,15 +39,15 @@ class Signup extends Component {
     return (
       <div className="container-fluid">
       <div className="row">
-      <div className="col-md-6" style={{marginTop:"15%"}}>
+      <div className="col-md-6" style={{marginTop:"12%"}}>
 
-        <h3>Regístrate</h3>
+        <h3 style={{paddingBottom: "30px"}}>Regístrate</h3>
 
         <form onSubmit={this.handleFormSubmit}>
             <div className="form-group">
-            <label for="exampleFormControlInput1">Nombre de Usuario:</label>
+            <label className="size" for="formGroupExampleInput">Nombre de Usuario:</label>
             <input
-              className="form-control" id="exampleFormControlInput1"
+              className="form-control size-fill" id="formGroupExampleInput"
               type="text"
               name="username"
               value={this.state.username}
@@ -55,9 +55,9 @@ class Signup extends Component {
               />
             </div>
             <div className="form-group">
-            <label for="exampleInputPassword1">Contraseña:</label>
+            <label className="size" for="exampleInputPassword1">Contraseña:</label>
             <input
-              className="form-control" id="exampleInputPassword1"
+              className="form-control size-fill" id="exampleInputPassword1"
               type="password"
               name="password"
               value={this.state.password}
@@ -66,7 +66,7 @@ class Signup extends Component {
             </div>
           
           
-          <button type="submit" className="btn btn-success" value="Sign up">Subscríbete</button>
+          <button type="submit" className="btn btn-success btn-class" value="Sign up">Subscríbete</button>
         </form>
       </div>
       
