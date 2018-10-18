@@ -38,6 +38,7 @@ export default class EditProfile extends React.Component {
     })
     .then(res => {
       console.log(res)
+      window.location.reload()
       return <Redirect to="/Profile"></Redirect>
     })
     .catch(e=>console.log("Error",e))

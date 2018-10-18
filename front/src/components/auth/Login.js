@@ -45,7 +45,7 @@ class Login extends Component {
     return (
     <div className="container-fluid">
     <div className="row">
-    <div className="col-md-6">
+    <div className="col-md-6" style={{marginTop:"15%"}}>
 
       <h3>Por favor, loguéate para entrar.</h3>
 
@@ -65,7 +65,7 @@ class Login extends Component {
 
       <h1>{this.state.error ? 'Error' : ''}</h1>
     </div>
-    <div className="col-md-6">
+    <div className="col-md-6" style={{marginTop:"8%"}}>
           <img src="/images/YayooLogo.png" alt="Yayoo Logo"/>
     </div>
     </div>

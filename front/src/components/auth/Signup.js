@@ -39,7 +39,7 @@ class Signup extends Component {
     return (
       <div className="container-fluid">
       <div className="row">
-      <div className="col-md-6">
+      <div className="col-md-6" style={{marginTop:"15%"}}>
 
         <h3>Regístrate</h3>
 
@@ -70,7 +70,7 @@ class Signup extends Component {
         </form>
       </div>
       
-      <div className="col-md-6">
+      <div className="col-md-6" style={{marginTop:"8%"}}>
           <img src="/images/YayooLogo.png" alt="Yayoo Logo"/>
       </div>
       </div>

@@ -44,3 +44,14 @@
   width: 267px;
   margin-bottom: 10px;
 }
+
+.btn-class {
+  text-decoration: none;
+  color: white;
+}
+
+.btn-class :hover {
+  color: white;
+  text-decoration: none;
+}
+

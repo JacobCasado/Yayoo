@@ -25,16 +25,18 @@ export default class Meetings extends Component {
     return (
       <div>
         <h1>Quedadas</h1>
-        <hr />
-        <div>
+        <div className="container-fluid">
+        <div className="row">
+        <div className="col-md-6">
+
           {this.state.listOfMeetings.length > 0 ? (
             <Map id="myMap" meetings={this.state.listOfMeetings} />
-          ) : (
-            ""
-          )}
+            ) : (
+              ""
+              )}
         </div>
-        <div>
-          <Link to="/Createmeeting">Crea tu quedada</Link>
+        <div className="col-md-6">
+        <button className="btn btn-success btn-class"><Link className="btn-class" to="/Createmeeting">Crea tu quedada</Link></button>
           <div />
           <div>
             <div>
@@ -51,6 +53,8 @@ export default class Meetings extends Component {
               })}
             </div>
           </div>
+        </div>
+        </div>
         </div>
       </div>
     );

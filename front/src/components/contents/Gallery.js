@@ -63,7 +63,7 @@ export default class Gallery extends Component {
         <div>
           <h1>FotoNieto</h1>
           <form onSubmit={e => this.handleSubmit(e)}>
-          <div className="form-group">
+          <div className="form-group" style={{marginTop:"50px"}}>
             <p style={{ color: "red" }}>{error}</p>
             <label style={{padding: "8px"}} for="exampleFormControlTextarea1">Descripción</label>
             <input
