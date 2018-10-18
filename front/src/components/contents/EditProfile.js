@@ -53,40 +53,58 @@ export default class EditProfile extends React.Component {
     let {user}= this.state;
     return user ? (
       <div>
-        <h1>Edita tu Perfil:</h1>
-        <div className="text-center" key={user._id}>
-          <img src={user.image} className="rounded" alt=""/> 
+        <h1>Tu Perfil</h1>
+        <div className="container">
+        <div className="row">
+        <div className="col-md-6" style={{marginTop:"50px"}}>
+        <div className="img-prof" key={user._id}>
+          <img src={user.image} className="img-fix" alt=""/> 
         </div>
-        <div>
+        </div>
+        <div className="col-md-6" style={{marginTop:"50px"}}>
         <form onSubmit={this.handleFormSubmit}>
-          <label>Nombre de Usuario</label>
-          <input type="text" name="username" value={user.username} onChange={e => this.handleChangeProf(e, "username")}/>
-          <label>Descripción</label>
-          <textarea name="description" value={user.description} onChange={e => this.handleChangeProf(e, "description")} />
-          <label>Género</label>
-          <select name="gender" value={user.gender} onChange={e => this.handleChangeProf(e, "gender")}>
+        <div className="form-group">
+          <label for="formGroupExampleInput">Nombre de Usuario</label>
+          <input type="text" className="form-control" id="formGroupExampleInput" name="username" value={user.username} onChange={e => this.handleChangeProf(e, "username")}/>
+        </div>
+        <div className="form-group">
+          <label for="formGroupExampleInput">Descripción</label>
+          <textarea className="form-control" id="formGroupExampleInput" name="description" value={user.description} onChange={e => this.handleChangeProf(e, "description")} />
+        </div>
+        <div className="form-group">
+          <label for="formGroupExampleInput">Género</label>
+          <select className="form-control" id="formGroupExampleInput" name="gender" value={user.gender} onChange={e => this.handleChangeProf(e, "gender")}>
             <option value="-">-</option>
             <option value="male">Hombre</option>
             <option value="female">Mujer</option>
           </select>
-          <label>Domicilio</label>
-          <input name="location" value={user.location} onChange={e => this.handleChangeProf(e, "location")} />
-          <label>Teléfono</label>
-          <input name="telephone" value={user.telephone} onChange={e => this.handleChangeProf(e, "telephone")} />
-          <label>Imagen</label>
+        </div>
+        <div className="form-group">
+          <label for="formGroupExampleInput">Domicilio</label>
+          <input className="form-control" id="formGroupExampleInput" name="location" value={user.location} onChange={e => this.handleChangeProf(e, "location")} />
+        </div>
+        <div className="form-group">
+          <label for="formGroupExampleInput">Teléfono</label>
+          <input className="form-control" id="formGroupExampleInput" name="telephone" value={user.telephone} onChange={e => this.handleChangeProf(e, "telephone")} />
+        </div>
+        <div className="form-group">
+          <label for="formGroupExampleInput">Imagen</label>
           <input
               type="file"
-              name="image"
+              className="form-control" id="formGroupExampleInput" name="image"
               onChange={e =>
                 this.setState({
                   image: e.target.files[0]
                 })
               }
               />
+        </div>
           
-          <button type="submit">Submit</button>
+          <button className="btn btn-success" type="submit">Subir</button>
 
         </form>
+        </div>
+        </div>
         </div>
       </div>
     ) : 'Loading';

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import AuthService from "./AuthService";
+import {Redirect} from "react-router-dom"
 
 class Signup extends Component {
   constructor(props) {
@@ -19,6 +20,7 @@ class Signup extends Component {
         this.setState({
           username: "",
           password: "",
+          redirect: true
           
         });
         this.props.getUser(response.user);
@@ -32,6 +34,8 @@ class Signup extends Component {
   };
 
   render() {
+    if(this.state.redirect) return <Redirect to="/profile" />
+    
     return (
       <div className="container-fluid">
       <div className="row">

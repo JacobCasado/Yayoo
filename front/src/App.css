@@ -10,7 +10,7 @@
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: #148500
+  color: #148500;
 }
 
 .nav-type {
@@ -22,7 +22,25 @@
   color: #dda509;
   padding-left: 20px;
 }
- .nav-class :hover{
-   color:white;
- }
 
+.nav-class :hover {
+  color: white;
+}
+
+.img-container {
+  height: 342px;
+  width: 514px;
+}
+
+.img-fix {
+  height: 100%;
+  width: 100%;
+}
+
+.img-prof {
+  border: 4px solid #148500;
+  border-radius: 2%;
+  height: 337px;
+  width: 267px;
+  margin-bottom: 10px;
+}

@@ -16,15 +16,17 @@ export default class Gallery extends Component {
       return this.setState({ error: "Empty Description" });
     this.service.addPicture(image, description).then(res => {
       this.getAllImages();
-    })
+    });
   }
 
   getAllImages = () => {
-    axios.get(`http://localhost:3010/images/`,{withCredentials: true}).then(responseFromApi => {
-      this.setState({
-        listOfImages: responseFromApi.data
+    axios
+      .get(`http://localhost:3010/images/`, { withCredentials: true })
+      .then(responseFromApi => {
+        this.setState({
+          listOfImages: responseFromApi.data
+        });
       });
-    });
   };
 
   componentDidMount() {
@@ -32,33 +34,47 @@ export default class Gallery extends Component {
   }
 
   render() {
-    let gallery = '';
-    if(this.state.listOfImages) {
+    let gallery = "";
+
+    if (this.state.listOfImages) {
       gallery = this.state.listOfImages.map((images, index) => {
-          return (
-            <div key={images._id}>
-              <img src={images.image} alt=""/>
-              <p>{images.user.username} </p>
-              <p>{images.description} </p>
+        return (
+          <div className="col-md-6">
+            <div className="card" style={{ width: "32.3rem", margin:"10px" }}>
+              <div className="img-container" key={images._id}>
+                <img
+                  className="card-img-top img-fix"
+                  src={images.image}
+                  alt=""
+                />
+              </div>
+              <div className="card-body">
+                <h6 className="card-title">{images.user.username} </h6>
+                <h5 className="card-text">{images.description} </h5>
+              </div>
             </div>
-          )
-          
-        })}
-    let {error } = this.state;
+          </div>
+        );
+      });
+    }
+    let { error } = this.state;
     return (
       <div>
         <div>
           <h1>FotoNieto</h1>
           <form onSubmit={e => this.handleSubmit(e)}>
+          <div className="form-group">
             <p style={{ color: "red" }}>{error}</p>
-            <label>Descripción</label>
+            <label style={{padding: "8px"}} for="exampleFormControlTextarea1">Descripción</label>
             <input
+              className="" id="exampleFormControlTextarea1" rows="3"
               type="text"
               name="description"
               onChange={e => this.setState({ description: e.target.value })}
-            />
-            <label>Imagen</label>
+              />
+            <label style={{padding: "8px"}} for="exampleFormControlFile1">Imagen</label>
             <input
+              className=" file" id="exampleFormControlFile1"
               type="file"
               name="image"
               onChange={e =>
@@ -66,11 +82,16 @@ export default class Gallery extends Component {
                   image: e.target.files[0]
                 })
               }
-            />
-            <button onClick={e => this.handleSubmit(e)}>Submit</button>
+              />
+            <button className="btn btn-success" onClick={e => this.handleSubmit(e)}>Compartir</button>
+              </div>
           </form>
         </div>
-        { gallery }
+        <div className="container">
+          <div className="row">
+            {gallery}
+          </div>
+        </div>
       </div>
     );
   }
